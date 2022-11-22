@@ -11,12 +11,10 @@ const countriesCard = document.querySelector('.country-info');
 searchInput.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));
 
 function onSearchCountry(e) {
-    const countryName = e.textContent.trim();
+    const countryName = e.target.value.trim(); 
     
-    if(!e.textContent) {
-        cleanerList();
-        cleanerCard(); 
-        return 
+    if(!countryName) {
+        return
     }
 
     fetchCountries(countryName)
@@ -30,6 +28,11 @@ function onSearchCountry(e) {
         }
     })
     .catch(err => console.error(err));    
+
+    if(!e.textContent) {
+        cleanerList();
+        cleanerCard(); 
+    }
 }
 
 function manyCountriesFound() {
@@ -50,7 +53,7 @@ function createCountryCard(arr) {
         <ul>
         <li class="prop-item"><h2>Capital:</h2><p class="country-name">${capital}</p></li>
         <li class="prop-item"><h2>Population:</h2><p class="country-name">${population}</p></li>
-        <li class="prop-item"><h2>Languages:</h2><p class="country-name">${Object.values(languages)}</p></li>
+        <li class="prop-item"><h2>Languages:</h2><p class="country-name">${Object.values(languages).join(', ')}</p></li>
         </ul>`}).join('');     
     countriesCard.innerHTML = markup;  
 }
