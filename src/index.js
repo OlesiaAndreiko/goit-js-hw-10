@@ -11,7 +11,13 @@ const countriesCard = document.querySelector('.country-info');
 searchInput.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));
 
 function onSearchCountry(e) {
-    const countryName = e.target.value.trim();
+    const countryName = e.textContent.trim();
+    
+    if(!e.textContent) {
+        cleanerList();
+        cleanerCard(); 
+        return 
+    }
 
     fetchCountries(countryName)
     .then(data => {
@@ -23,12 +29,7 @@ function onSearchCountry(e) {
             createCountryCard(data)
         }
     })
-    .catch(err => console.error(err));
-    
-    if(!e.textContent) {
-        cleanerList();
-        cleanerCard();  
-    }
+    .catch(err => console.error(err));    
 }
 
 function manyCountriesFound() {
