@@ -1,5 +1,4 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import notFound from './index'
 
 const BASE_URL = 'https://restcountries.com/v3.1/name/'
 const filtres ='name,capital,population,flags,languages'

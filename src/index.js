@@ -61,26 +61,3 @@ function cleanerList() {
 function cleanerCard() {
     countriesCard.innerHTML = "";
 }
-
-
-
-// function fetchCountries(name) {
-//     console.log(name);
-//     fetch(`${BASE_URL}${name}?fields=${filtres}`)
-//     .then(resp => {
-//         if(!resp.ok) {
-//             notFound()
-//             throw Error(statusText);
-//         } 
-//         return resp.json()})
-//     .then(data=> {        
-//             if (data.length > 10) {
-//                 manyCountriesFound(data)
-//             } else if (data.length <= 10 & data.length > 1) {
-//                 createCountryList(data)
-//             } else if (data.length = 1) {  
-//                 createCountryCard(data)
-//             }
-//         })
-//     .catch(err=>console.error(err))
-// }
